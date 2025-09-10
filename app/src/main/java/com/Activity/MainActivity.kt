@@ -3,9 +3,12 @@ package com.Activity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.Adapter.CategoryAdapter
 import com.bumptech.glide.Glide
 import com.ViewModel.MainViewModel
 import com.example.coffee_shop.databinding.ActivityMainBinding
@@ -24,6 +27,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initBanner()
+        initCategory()
+    }
+
+    private fun initCategory() {
+        binding.progressBarCategory.visibility = View.VISIBLE
+        viewModel.loadCategory().observeForever {
+            binding.categoryView
+                .layoutManager = LinearLayoutManager(
+                this@MainActivity, LinearLayoutManager.HORIZONTAL, false
+            )
+            binding.categoryView.adapter = CategoryAdapter(it)
+            binding.progressBarCategory.visibility = View.GONE
+        }
+        viewModel.loadCategory()
     }
 
     private fun initBanner() {

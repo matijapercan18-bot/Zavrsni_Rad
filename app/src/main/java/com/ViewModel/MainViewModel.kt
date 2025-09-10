@@ -1,7 +1,9 @@
 package com.ViewModel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import com.Domain.BannerModel
+import com.Domain.CategoryModel
 import com.Repository.MainRepository
 
 class MainViewModel {
@@ -9,5 +11,9 @@ class MainViewModel {
 
     fun loadBanner(): LiveData<MutableList<BannerModel>>{
         return repository.loadBanner()
+    }
+
+    fun loadCategory(): LiveData<MutableList<CategoryModel>>{
+        return repository.loadCategory()
     }
 }
