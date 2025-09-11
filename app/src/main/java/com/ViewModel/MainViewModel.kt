@@ -1,13 +1,15 @@
 package com.ViewModel
 
+import android.adservices.adid.AdId
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.Domain.BannerModel
 import com.Domain.CategoryModel
 import com.Domain.ItemsModel
 import com.Repository.MainRepository
 
-class MainViewModel {
+class MainViewModel: ViewModel() {
     private val repository= MainRepository()
 
     fun loadBanner(): LiveData<MutableList<BannerModel>>{
@@ -20,5 +22,9 @@ class MainViewModel {
 
     fun loadPopular(): LiveData<MutableList<ItemsModel>>{
         return repository.loadPopular()
+    }
+
+    fun loadItems(categoryID: String): LiveData<MutableList<ItemsModel>> {
+        return repository.loadItemCategory(categoryID)
     }
 }

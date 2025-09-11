@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightCream"
-    tools:context="com.Activity.ItemListActivity">
+    tools:context="com.Activity.ItemsListActivity">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -35,13 +35,15 @@
                     app:srcCompat="@drawable/back" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/backBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="Back"
                     android:textColor="@color/darkBrown"
-                    app:layout_constraintStart_toEndOf="@+id/imageView5" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView5"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/categoryTxt"

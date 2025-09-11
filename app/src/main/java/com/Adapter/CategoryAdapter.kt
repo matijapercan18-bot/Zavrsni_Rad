@@ -1,16 +1,17 @@
 package com.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.Activity.ItemsListActivity
 import com.Domain.CategoryModel
 import com.example.coffee_shop.R
-import com.example.coffee_shop.databinding.ActivitySplashBinding
 import com.example.coffee_shop.databinding.ViewholderCategoryBinding
-import com.google.firebase.database.Transaction
 
 class CategoryAdapter(val items: MutableList<CategoryModel>) :
     RecyclerView.Adapter<CategoryAdapter.Viewholder>() {
@@ -32,7 +33,7 @@ class CategoryAdapter(val items: MutableList<CategoryModel>) :
     }
 
     override fun onBindViewHolder(holder: CategoryAdapter.Viewholder, position: Int) {
-        val item=items[position]
+        val item =  items[position]
         holder.binding.titleCat.text=item.title
 
         holder.binding.root.setOnClickListener {
@@ -42,7 +43,11 @@ class CategoryAdapter(val items: MutableList<CategoryModel>) :
             notifyItemChanged(selectedPosition)
 
             Handler(Looper.getMainLooper()).postDelayed({
-
+            val intent= Intent(context, ItemsListActivity::class.java).apply {
+                putExtra("id",item.id.toString())
+                putExtra("title",item.title)
+            }
+                ContextCompat.startActivity(context,intent,null)
             },500)
         }
 

@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.loadPopular().observeForever {
             binding.recyclerViewPopular.layoutManager = GridLayoutManager(this, 2)
             binding.recyclerViewPopular.adapter = PopularAdapter(it)
-            binding.progressBarBanner.visibility = View.GONE
+            binding.progressBarPopular.visibility = View.GONE
         }
         viewModel.loadPopular()
     }
